@@ -242,10 +242,22 @@ footer {
 	}
 
 	h1 {
-		color: #000;
+		//color: #000;
+		color: #999;
+		//color: #fff;
 	}
 
 	h1 a {
+		margin: 0;
+	}
+
+	h2 {
+		//color: #000;
+		color: #999;
+		//color: #fff;
+	}
+
+	h2 a {
 		margin: 0;
 	}
 

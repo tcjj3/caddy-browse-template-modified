@@ -6,89 +6,37 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 * { padding: 0; margin: 0; }
-
 body {
 	font-family: sans-serif;
 	text-rendering: optimizespeed;
 	background-color: #ffffff;
 }
-
-#model {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	display: none;
-	align-items: center;
-	justify-content: center;
-	background-color: rgba(0, 0, 0, 0.8);
-	z-index: 9990;
-}
-
-#model.open {
-	display: flex;
-}
-
-#model > * {
-	z-index: 9999;
-}
-#preview-image, #preview-video {
-	display: none;
-	text-align: center;
-	justify-content: center;
-}
-
-#preview-image.open, #preview-video.open {
-	display: inline-block;
-}
-
-#preview-image img {
-	//max-width: 90vw;
-	max-width: 100vw;
-	//max-height: 90vh;
-	max-height: 100vh;
-}
-
-#preview-video video {
-	//max-width: 90vw;
-	max-width: 100vw;
-	//max-height: 90vh;
-	max-height: 100vh;
-}
-
 a {
 	color: #006ed3;
 	text-decoration: none;
 }
-
 a:hover,
 h1 a:hover {
 	color: #319cff;
 }
-
 header,
 #summary {
 	padding-left: 5%;
 	padding-right: 5%;
 }
-
 th:first-child,
 td:first-child {
 	width: 5%;
 }
-
 th:last-child,
 td:last-child {
 	width: 5%;
 }
-
 header {
 	padding-top: 25px;
 	padding-bottom: 15px;
 	background-color: #f2f2f2;
 }
-
 h1 {
 	font-size: 20px;
 	font-weight: normal;
@@ -97,47 +45,19 @@ h1 {
 	text-overflow: ellipsis;
 	color: #999;
 }
-
 h1 a {
 	color: #000;
 	margin: 0 4px;
 }
-
 h1 a:hover {
 	text-decoration: underline;
 }
-
 h1 a:first-child {
 	margin: 0;
 }
-
-h2 {
-	//font-size: 20px;
-	font-weight: normal;
-	white-space: nowrap;
-	overflow-x: hidden;
-	text-overflow: ellipsis;
-	color: #999;
-}
-
-h2 a {
-	//color: #000;
-	color: #fff;
-	margin: 0 4px;
-}
-
-h2 a:hover {
-	text-decoration: underline;
-}
-
-h2 a:first-child {
-	margin: 0;
-}
-
 main {
 	display: block;
 }
-
 .meta {
 	font-size: 12px;
 	font-family: Verdana, sans-serif;
@@ -145,72 +65,57 @@ main {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-
 .meta-item {
 	margin-right: 1em;
 }
-
 #filter {
 	padding: 4px;
 	border: 1px solid #CCC;
 }
-
 table {
 	width: 100%;
 	border-collapse: collapse;
 }
-
 tr {
 	border-bottom: 1px dashed #dadada;
 }
-
 tbody tr:hover {
 	background-color: #ffffec;
 }
-
 th,
 td {
 	text-align: left;
 	padding: 10px 0;
 }
-
 th {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	font-size: 16px;
 	white-space: nowrap;
 }
-
 th a {
 	color: black;
 }
-
 th svg {
 	vertical-align: middle;
 }
-
 td {
 	white-space: nowrap;
 	font-size: 14px;
 }
-
 td:nth-child(2) {
 	width: 80%;
 }
-
 td:nth-child(3) {
 	padding: 0 20px 0 20px;
 }
-
 th:nth-child(4),
 td:nth-child(4) {
 	text-align: right;
 }
-
 td:nth-child(2) svg {
 	position: absolute;
 }
-
 td .name,
 td .goup {
 	margin-left: 1.75em;
@@ -218,11 +123,9 @@ td .goup {
 	overflow-wrap: break-word;
 	white-space: pre-wrap;
 }
-
 .icon {
 	margin-right: 5px;
 }
-
 .icon.sort {
 	display: inline-block;
 	width: 1em;
@@ -230,60 +133,39 @@ td .goup {
 	position: relative;
 	top: .2em;
 }
-
 .icon.sort .top {
 	position: absolute;
 	left: 0;
 	top: -1px;
 }
-
 .icon.sort .bottom {
 	position: absolute;
 	bottom: -1px;
 	left: 0;
 }
-
 footer {
 	padding: 40px 20px;
 	font-size: 12px;
 	text-align: center;
 }
-
 @media (max-width: 600px) {
 	.hideable {
 		display: none;
 	}
-
 	td:nth-child(2) {
 		width: auto;
 	}
-
 	th:nth-child(3),
 	td:nth-child(3) {
 		padding-right: 5%;
 		text-align: right;
 	}
-
 	h1 {
-		//color: #000;
-		color: #999;
-		//color: #fff;
+		color: #000;
 	}
-
 	h1 a {
 		margin: 0;
 	}
-
-	h2 {
-		//color: #000;
-		color: #999;
-		//color: #fff;
-	}
-
-	h2 a {
-		margin: 0;
-	}
-
 	#filter {
 		max-width: 100px;
 	}
@@ -331,23 +213,9 @@ footer {
 				</g>
 			</defs>
 		</svg>
-		<div id="model" onclick="modelClose()">
-			<div onclick="event.stopPropagation();">
-				<div id="preview-image" onclick="modelClose()"><img src="" onclick="modelClose()" /></div>
-				<div id="preview-video">
-					<video controls>
-						<source />
-					</video>
-				</div>
-			</div>
-		</div>
 		<header>
-			<h2>
-				Welcome {{.IP}}! This is <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>, you're visiting <a rel="noopener noreferrer" href="{{.URI}}">{{.URI}}</a>.
-			</h2>
-			<br />
 			<h1>
-				Navigation: {{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
+				{{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
 			</h1>
 		</header>
 		<main>
@@ -422,13 +290,12 @@ footer {
 					<tr class="file">
 						<td></td>
 						<td>
-							{{- if .IsDir}}
 							<a href="{{html .URL}}">
+								{{- if .IsDir}}
 								<svg width="1.5em" height="1em" version="1.1" viewBox="0 0 317 259"><use xlink:href="#folder{{if .IsSymlink}}-shortcut{{end}}"></use></svg>
-							{{- else}}
-							<a href="{{html .URL}}" onclick="preview('{{html .URL}}')">
+								{{- else}}
 								<svg width="1.5em" height="1em" version="1.1" viewBox="0 0 265 323"><use xlink:href="#file{{if .IsSymlink}}-shortcut{{end}}"></use></svg>
-							{{- end}}
+								{{- end}}
 								<span class="name">{{html .Name}}</span>
 							</a>
 						</td>
@@ -446,11 +313,11 @@ footer {
 			</div>
 		</main>
 		<footer>
-			Served by <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>
+			Served with <a rel="noopener noreferrer" href="https://caddyserver.com">Caddy</a>
 		</footer>
 		<script>
 			var filterEl = document.getElementById('filter');
-			//filterEl.focus();
+			filterEl.focus();
 			function filter() {
 				var q = filterEl.value.trim().toLowerCase();
 				var elems = document.querySelectorAll('tr.file');
@@ -483,41 +350,6 @@ footer {
 			}
 			var timeList = Array.prototype.slice.call(document.getElementsByTagName("time"));
 			timeList.forEach(localizeDatetime);
-
-			var model = document.getElementById('model');
-			var previewVideoEl = document.getElementById('preview-video');
-			var previewImageEl = document.getElementById('preview-image');
-
-			var previewVideo = document.querySelector('#preview-video video');
-			var previewSource = document.querySelector('#preview-video video source');
-			var previewImage = document.querySelector('#preview-image img');
-
-			function modelClose() {
-				model.classList.remove('open');
-				previewVideo.pause();
-			}
-
-			function preview(url) {
-				model.classList.add('open');
-				ext = url.split('.').pop().toLowerCase();
-
-				if(['jpg','jpeg','gif','png','ico','svg','bmp'].indexOf(ext) >= 0) {
-					event.preventDefault();
-					previewVideoEl.classList.remove('open');
-					previewImageEl.classList.add('open');
-					previewImage.src = url;
-					
-				} else
-				if(['mp4','webm', 'avi', 'mkv', 'mp3'].indexOf(ext) >= 0) {
-					event.preventDefault();
-					previewImageEl.classList.remove('open');
-					previewVideoEl.classList.add('open');
-					previewSource.type = 'video/' + ext;
-					previewSource.src = url;
-					previewVideo.src = url;
-					previewVideo.play();
-				}
-			}
 		</script>
 	</body>
 </html>
