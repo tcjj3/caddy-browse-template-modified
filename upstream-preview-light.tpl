@@ -511,6 +511,7 @@ footer {
 					previewSource.type = 'video/' + ext;
 					previewSource.src = url;
 					previewVideo.src = url;
+					previewVideo.loop = "loop";
 					previewVideo.play();
 				}
 			}
