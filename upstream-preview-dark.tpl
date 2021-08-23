@@ -125,6 +125,29 @@ h1 a:first-child {
 	margin: 0;
 }
 
+h2 {
+	//font-size: 20px;
+	font-weight: normal;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	color: #999;
+}
+
+h2 a {
+	//color: #000;
+	color: #fff;
+	margin: 0 4px;
+}
+
+h2 a:hover {
+	text-decoration: underline;
+}
+
+h2 a:first-child {
+	margin: 0;
+}
+
 main {
 	display: block;
 }
