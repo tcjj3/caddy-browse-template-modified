@@ -452,7 +452,7 @@ footer {
 			</div>
 		</main>
 		<footer>
-			Theme modified by <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>
+			Theme by <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>
 		</footer>
 		<script>
 			var filterEl = document.getElementById('filter');
