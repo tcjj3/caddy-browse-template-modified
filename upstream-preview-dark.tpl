@@ -53,6 +53,13 @@ body {
 	max-height: 100vh;
 }
 
+#preview-video video {
+	//max-width: 90vw;
+	max-width: 100vw;
+	//max-height: 90vh;
+	max-height: 100vh;
+}
+
 svg {
 	fill: currentColor;
 	//fill: #fff;
