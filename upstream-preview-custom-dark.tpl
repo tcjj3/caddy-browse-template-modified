@@ -374,7 +374,7 @@ footer {
 		</div>
 		<header>
 			<h2>
-				Welcome {{.IP}}!
+				Welcome to my website!
 			</h2>
 			<h2>
 				This is <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>.
