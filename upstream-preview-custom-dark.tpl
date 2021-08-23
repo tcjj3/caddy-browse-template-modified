@@ -374,7 +374,13 @@ footer {
 		</div>
 		<header>
 			<h2>
-				Welcome {{.IP}}! This is <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>, you're visiting <a rel="noopener noreferrer" href="{{.URI}}">{{.URI}}</a>.
+				Welcome {{.IP}}!
+			</h2>
+			<h2>
+				This is <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>.
+			</h2>
+			<h2>
+				You're visiting <a rel="noopener noreferrer" href="{{.URI}}">{{.URI}}</a>.
 			</h2>
 			<br />
 			<h1>
