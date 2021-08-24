@@ -377,7 +377,7 @@ footer {
 				Welcome to my website!
 			</h2>
 			<h2>
-				This is <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3</a>.
+				This is <a rel="noopener noreferrer" href="https://github.com/tcjj3">tcjj3 (BG7XUD)</a>.
 			</h2>
 			<h2>
 				You're visiting <a rel="noopener noreferrer" href="{{.URI}}">{{.URI}}</a>.
