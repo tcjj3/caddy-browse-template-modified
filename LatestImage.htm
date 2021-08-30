@@ -9,7 +9,6 @@
 var paused = false;
 
 function showImage() {
-	setImage();
 	if (!paused) {
 		var o = document.getElementById("ScriptSpan"); //document.body;
 		while(o.hasChildNodes()) {
@@ -23,10 +22,12 @@ function showImage() {
 }
 
 function startToShowImage() {
+	setImage();
 	showImage();
 }
 
 function Callback_Image(url) {
+	
 	var w = document.documentElement.clientWidth;
 	if (w <= 0) w = document.body.clientWidth;
 	if (w > 10) w -= 10;
@@ -35,22 +36,39 @@ function Callback_Image(url) {
 	if (h <= 0) h = document.body.clientHeight;
 	if (h > 10) h -= 10;
 	
+	var imgdiv = document.getElementById("ImageDiv");
+	imgdiv.height = h + "px";
+	imgdiv.style.height = h + "px";
+	
+	
+	if (h >= w) {
+		h = w;
+		imgdiv.style.display = "table-cell";
+	} else {
+		w = h;
+		imgdiv.style.display = "";
+	}
+	
 	var img = document.getElementById("image");
 	if (img.src != url) {
+		
 		img.width = w;
 		img.height = h;
 		img.style.width = w;
 		img.style.height = h;
-		img.style.position = "absolute";
+		//img.style.position = "absolute";
 		img.style.zIndex = -1;
+		img.style.verticalAlign = "middle";
 		//img.onload = imageOnload;
 		//img.onerror = imageError;
 		img.onclick = imageOnclick;
+		
 		img.src = url;
 	}
 }
 
 function setImage() {
+	
 	var w = document.documentElement.clientWidth;
 	if (w <= 0) w = document.body.clientWidth;
 	if (w > 10) w -= 10;
@@ -58,41 +76,63 @@ function setImage() {
 	var h = document.documentElement.clientHeight;
 	if (h <= 0) h = document.body.clientHeight;
 	if (h > 10) h -= 10;
+	
+	var imgdiv = document.getElementById("ImageDiv");
+	imgdiv.height = h + "px";
+	imgdiv.style.height = h + "px";
+	
+	
+	if (h >= w) {
+		h = w;
+		imgdiv.style.display = "table-cell";
+	} else {
+		w = h;
+		imgdiv.style.display = "";
+	}
 	
 	var img = document.getElementById("image");
 	img.width = w;
 	img.height = h;
 	img.style.width = w;
 	img.style.height = h;
-	img.style.position = "absolute";
+	//img.style.position = "absolute";
 	img.style.zIndex = -1;
+	img.style.verticalAlign = "middle";
 	//img.onload = imageOnload;
 	//img.onerror = imageError;
 	img.onclick = imageOnclick;
+	
+	self.setTimeout("setImage()", 1);
 }
 
 function imageOnclick() { // Clicking on the image will pause the update
 	paused = !paused;
 }
 
-function Callback_LatestFullDisk(url) {
-	if (!paused) Callback_Image(url);
+function Callback_LatestFullDisk(json) {
+	if (!paused) {
+		if (json != null && json.image != null && json.image != "") Callback_Image(json.image);
+	}
 }
 
-function Callback_LatestFullDisk_fc(url) {
-	if (!paused) Callback_Image(url);
+function Callback_LatestFullDisk_fc(json) {
+	if (!paused) {
+		if (json != null && json.image != null && json.image != "") Callback_Image(json.image);
+	}
 }
 
-function Callback_LatestMerged(url) {
-	if (!paused) Callback_Image(url);
+function Callback_LatestMerged(json) {
+	if (!paused) {
+		if (json != null && json.image != null && json.image != "") Callback_Image(json.image);
+	}
 }
 </script>
 
 </head>
-<body onload="startToShowImage();">
+<body onload="startToShowImage();" style="background-color: black; ">
 
 <span id="ScriptSpan"></span>
-<span><img id="image" src="" /></span>
+<div id="ImageDiv" style="text-align: center; vertical-align: middle; "><img id="image" src="" /></div>
 
 </body>
 </html>
