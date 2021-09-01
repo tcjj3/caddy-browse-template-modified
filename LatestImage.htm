@@ -32,12 +32,28 @@ if (autoUpdate_String == null || autoUpdate_String == "") {
 	autoUpdate = false;
 }
 
+autoReloadImg = false;
+autoReloadImg_String = getQueryString("autoreloadimg");
+if (autoReloadImg_String == null || autoReloadImg_String == "") {
+	autoReloadImg = false;
+} else if (autoReloadImg_String.toLowerCase() == "true" || autoReloadImg_String.toLowerCase() == "1") {
+	autoReloadImg = true;
+}
+
 showDesc = true;
 showDesc_String = getQueryString("showdesc");
 if (showDesc_String == null || showDesc_String == "") {
 	showDesc = true;
 } else if (showDesc_String.toLowerCase() == "false" || showDesc_String.toLowerCase() == "0") {
 	showDesc = false;
+}
+
+showStatus = true;
+showStatus_String = getQueryString("showstatus");
+if (showStatus_String == null || showStatus_String == "") {
+	showStatus = true;
+} else if (showStatus_String.toLowerCase() == "false" || showStatus_String.toLowerCase() == "0") {
+	showStatus = false;
 }
 </script>
 
@@ -165,7 +181,8 @@ function startToShowImage() {
 			filenameLineBr.style.display = "none";
 		} else {
 			filenameSpan.style.display = "";
-			playSpan.style.display = "inline-block";
+			if (showStatus) {playSpan.style.display = "inline-block";}
+			else {playSpan.style.display = "none";}
 			pauseSpan.style.display = "none";
 			filenameLineBr.style.display = "";
 		}
@@ -225,7 +242,7 @@ function Callback_Image(url) {
 		img.style.zIndex = -1;
 		img.style.verticalAlign = "middle";
 		////img.onload = function() {imageOnload();};
-		////img.onerror = function() {imageError();};
+		if (autoReloadImg) img.onerror = function() {imageError();};
 		//img.onclick = function() {imageOnclick();};
 		
 		img.src = url;
@@ -261,7 +278,8 @@ function setImage() {
 	if (paused) {
 		playSpan.style.display = "none";
 		if (showDesc) {
-			pauseSpan.style.display = "inline-block";
+			if (showStatus) {pauseSpan.style.display = "inline-block";}
+			else {pauseSpan.style.display = "none";}
 			filenameSpan.style.display = "";
 			filenameLineBr.style.display = "";
 		} else {
@@ -271,7 +289,8 @@ function setImage() {
 		}
 	} else {
 		if (showDesc) {
-			playSpan.style.display = "inline-block";
+			if (showStatus) {playSpan.style.display = "inline-block";}
+			else {playSpan.style.display = "none";}
 			filenameSpan.style.display = "";
 			filenameLineBr.style.display = "";
 		} else {
@@ -321,7 +340,7 @@ function setImage() {
 	img.style.zIndex = -1;
 	img.style.verticalAlign = "middle";
 	////img.onload = function() {imageOnload();};
-	////img.onerror = function() {imageError();};
+	if (autoReloadImg) img.onerror = function() {imageError();};
 	//img.onclick = function() {imageOnclick();};
 	
 	self.setTimeout("setImage()", 1);
@@ -330,6 +349,17 @@ function setImage() {
 function imageOnclick() { // Clicking on the image will pause the update
 	paused = !paused;
 	if (!paused) showImage();
+}
+
+function imageError() {
+	if (autoReloadImg && url_old != null && url_old != "") {
+		if (!paused) {
+			var img = document.getElementById("image");
+			if (img != null) {
+				img.src = url_old;
+			}
+		}
+	}
 }
 
 function Callback_LatestFullDisk(json) {
